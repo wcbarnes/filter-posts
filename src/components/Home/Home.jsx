@@ -6,6 +6,13 @@ import ArticleContainer from '../Article';
 
 import './Home.scss';
 
+/**
+ * Represents the homepage and feed.
+ * @constructor
+ * @param {function} this.props.getArticles - Gets all articles from topics the user is following
+ * @param {array} this.props.articleList - A list of all articles that were found from getArticles
+ * @param {array} this.props.following - A list of the topic id's that the user is following
+ */
 export class Home extends React.Component {
   componentDidMount() {
     this.props.getArticles();
@@ -26,17 +33,17 @@ export class Home extends React.Component {
             return false;
           })
           .map((article, i) => (
-          <ArticleContainer
-            key={i}
-            title={article.title}
-            summary={article.summary}
-            createdAt={article.createdAt}
-            likes={article.likesCount}
-            attribution={article.attribution.displayName}
-            mediaURL={article.media[0] ? article.media[0].url : ''}
-            id={article.id}
-          />
-        ))}
+            <ArticleContainer
+              key={i}
+              title={article.title}
+              summary={article.summary}
+              createdAt={article.createdAt}
+              likes={article.likesCount}
+              attribution={article.attribution.displayName}
+              mediaURL={article.media[0] ? article.media[0].url : ''}
+              id={article.id}
+            />
+          ))}
       </div>
     );
   }

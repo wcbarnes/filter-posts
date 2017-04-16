@@ -6,6 +6,14 @@ import Topic from './Topic';
 
 import './TopicView.scss';
 
+/**
+ * Represents a view to show all available Topics to follow.
+ * @constructor
+ * @param {function} this.props.updateFollowing - Updates the topics that the user is following
+ * @param {function} this.props.getTopics - Gets all available topics
+ * @param {array} this.props.topicList - A list of all available topics
+ * @param {array} this.props.following - A list of the topic id's that the user is following
+ */
 export class TopicView extends React.Component {
   constructor() {
     super();

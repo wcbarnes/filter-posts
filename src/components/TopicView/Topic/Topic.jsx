@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 
 import './Topic.scss';
 
+/**
+ * Represents a single topic inside of the topics view.
+ * @constructor
+ * @param {boolean} props.following - Whether or not the user is following this topic
+ * @param {function} props.onClick - Passed down from TopicView. Updates whether the user is following this Topic or not
+ * @param {number} props.id - The id of this topic
+ * @param {string} props.name - The name of this topic
+ */
 const Topic = props =>
   <div className={props.following ? 'topic following-order' : 'topic not-following-order'}>
     <button

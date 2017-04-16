@@ -7,6 +7,13 @@ import { getArticle } from '../../action-creators/action-creators.jsx';
 
 import '../Article/Article.scss';
 
+/**
+ * Represents the view when viewing a single article.
+ * @constructor
+ * @param {function} this.props.getArticle - Gets information for the current article
+ * @param {string} this.props.params - The parameter from the link that holds the id of the article
+ * @param {object} this.props.currentArticle - The information about the article
+ */
 export class ArticleView extends React.Component {
   componentDidMount() {
     this.props.getArticle(this.props.params.id);

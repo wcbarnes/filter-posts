@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 
 import './Layout.scss';
 
+/**
+ * Represents the base layout of the page. Currently holds the with links to Topics and the Homepage/Feed
+ * @constructor
+ * @param {object} props.children - The child components of the layout
+ */
 const Layout = props =>
   <div className="layout">
     <nav className="nav">
