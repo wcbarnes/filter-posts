@@ -7,11 +7,11 @@ A web application for filtering and displaying posts retrieved from an API
   1. Yarn
     -  [ ] run `yarn install`
     -  [ ] run `yarn start`
-    -  [ ] Go to [HealthSquare](http://localhost:8080/)
+    -  [ ] Go to [HealthSquare](http://localhost:8080/) `http://localhost:8000`
   2. npm
     -  [ ] run `npm i`
     -  [ ] run `npm start`
-    -  [ ] Go to [HealthSquare](http://localhost:8080/)
+    -  [ ] Go to [HealthSquare](http://localhost:8080/) `http://localhost:8000`
 
 ### Site Navigation
 1. Click on Topics to be sent to a page with all topics
