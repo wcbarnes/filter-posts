@@ -36,4 +36,17 @@ main {
   padding-top: 75px;
 }
 
-
+@media only screen and (max-width: 375px) {
+  .nav {
+    h1 {
+      font-size: 1.2em;
+      padding-left: 15px;
+    }
+    ul {
+      li {
+        padding-right: 5px;
+        font-size: .9em;
+      }
+    }
+  }
+}
