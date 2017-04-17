@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTopics, updateFollowing } from '../../action-creators/action-creators.jsx';
+import { updateFollowing } from '../../action-creators/action-creators.jsx';
 import Topic from './Topic';
 
 import './TopicView.scss';
@@ -10,7 +10,6 @@ import './TopicView.scss';
  * Represents a view to show all available Topics to follow.
  * @constructor
  * @param {function} this.props.updateFollowing - Updates the topics that the user is following
- * @param {function} this.props.getTopics - Gets all available topics
  * @param {array} this.props.topicList - A list of all available topics
  * @param {array} this.props.following - A list of the topic id's that the user is following
  */
@@ -18,9 +17,6 @@ export class TopicView extends React.Component {
   constructor() {
     super();
     this.updateFollowing = this.updateFollowing.bind(this);
-  }
-  componentDidMount() {
-    this.props.getTopics();
   }
 
   updateFollowing(id) {
@@ -46,14 +42,13 @@ export class TopicView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    topicList: state.get('topicList').toJS(),
-    following: state.get('following').toJS(),
+    topicList: state.get('topicList') ? state.get('topicList').toJS() : [],
+    following: state.get('following') ? state.get('following').toJS() : [],
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getTopics: () => dispatch(getTopics()),
     updateFollowing: topicID => dispatch(updateFollowing(topicID)),
   };
 }
@@ -61,7 +56,6 @@ function mapDispatchToProps(dispatch) {
 TopicView.propTypes = {
   following: PropTypes.array,
   updateFollowing: PropTypes.func,
-  getTopics: PropTypes.func,
   topicList: PropTypes.array,
 };
 

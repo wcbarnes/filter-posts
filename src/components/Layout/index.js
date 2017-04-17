@@ -1,3 +1,3 @@
-import Layout from './Layout.jsx';
+import { LayoutContainer } from './Layout.jsx';
 
-export default Layout;
+export default LayoutContainer;

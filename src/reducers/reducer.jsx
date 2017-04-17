@@ -5,13 +5,13 @@ import { Map, List } from 'immutable';
  * @constant
  * @prop {array} articleList - The empty immutable list of articles that will contain all articles
  * @prop {array} topicList - The empty immutable list of topics that will contain all topics
- * @prop {array} following - The empty immutable list that will contain ids from followed topics
+ * @prop {array} following - Starts at null so defaulting for defaulting it to all topics after API call
  * @prop {object} currentArticle - The empty immutable map that will contain all properties of the currently viewed article
  */
 const INITIAL_STATE = Map({
   articleList: List([]),
   topicList: List([]),
-  following: List([]),
+  following: null,
   currentArticle: Map({}),
 });
 
@@ -28,10 +28,13 @@ export default function (state = INITIAL_STATE, action) {
     /**
      * Reducer for when the loadTopic saga succeeds
      * Will merge the found topics into the current state
+     * When the first API call is made it will default following to all topics
+     * Otherwise it will just return the current following
      */
     case 'GET_TOPICS_SUCCESS':
       return state.merge({
         topicList: action.payload,
+        following: state.get('following') ? state.get('following') : action.payload.map(topic => topic.id),
       });
     /**
      * Reducer for when the loadArticle saga succees

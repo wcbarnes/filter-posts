@@ -15,8 +15,9 @@ A web application for filtering and displaying posts retrieved from an API
 
 ### Site Navigation
 1. Click on Topics to be sent to a page with all topics
-  * Any topic you click on will add the articles to your home feed
-  * If you click a topic a second time it will remove it from your following and homefeed
+  * All Topics are followed by default
+  * If you click a topic it will unfollow it
+  * Click again to refollow
   * Once you found all topics you want to follow click on home or HealthSquare
 2. Read the summary of any article that interests you
   * You may click on the article title to be redirected to a new page
