@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Topic.scss';
+if (process.env.NODE_ENV !== 'test') {
+  require('./Topic.scss');
+}
 
 /**
  * Represents a single topic inside of the topics view.

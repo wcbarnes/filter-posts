@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { updateFollowing } from '../../action-creators/action-creators.jsx';
 import Topic from './Topic';
 
-import './TopicView.scss';
+if (process.env.NODE_ENV !== 'test') {
+  require('./TopicView.scss');
+}
 
 /**
  * Represents a view to show all available Topics to follow.
