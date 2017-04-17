@@ -5,7 +5,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { getArticle } from '../../action-creators/action-creators.jsx';
 
-import '../Article/Article.scss';
+import '../Home/Article/Article.scss';
 
 /**
  * Represents the view when viewing a single article.

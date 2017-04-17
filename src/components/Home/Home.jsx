@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ArticleContainer from '../Article';
+import ArticleContainer from './Article';
 
 import './Home.scss';
 
