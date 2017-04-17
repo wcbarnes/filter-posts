@@ -1,4 +1,4 @@
-import { takeLatest, delay } from 'redux-saga';
+import { takeLatest } from 'redux-saga';
 import axios from 'axios';
 import { put } from 'redux-saga/effects';
 
@@ -22,6 +22,12 @@ const getArticlesFromAPI = getFromAPI(ARTICLES_ENDPOINT);
 const getTopicsFromAPI = getFromAPI(TOPICS_ENDPOINT);
 const getArticleFromAPI = getFromAPI(ARTICLE_ENDPOINT);
 
+/**
+ * A generator to Load articles from the API
+ * Goes to Reducer failure which goes to default cause if the request isn't finished.
+ * Goes to reducer success when the request is finished which merges all found articles into the state.
+ * @function
+ */
 function* loadArticles() {
   try {
     const articleList = yield getArticlesFromAPI();
@@ -31,6 +37,12 @@ function* loadArticles() {
   }
 }
 
+/**
+ * A generator to Load topics from the API
+ * Goes to Reducer failure which goes to default cause if the request isn't finished.
+ * Goes to reducer success when the request is finished which merges all found topics into the state.
+ * @function
+ */
 function* loadTopics() {
   try {
     const topicList = yield getTopicsFromAPI();
@@ -40,6 +52,12 @@ function* loadTopics() {
   }
 }
 
+/**
+ * A generator to Load a specific article from its id from the API
+ * Goes to Reducer failure which goes to default cause if the request isn't finished.
+ * Goes to reducer success when the request is finished which merges the found article into the state.
+ * @function
+ */
 function* loadArticle(id) {
   try {
     const article = yield getArticleFromAPI(id);
@@ -49,18 +67,34 @@ function* loadArticle(id) {
   }
 }
 
+/**
+ * A generator to make sure only the most recent API call is running on getArticles
+ * @function
+ */
 function* watchGetArticles() {
   yield takeLatest('GET_ARTICLES', loadArticles);
 }
 
+/**
+ * A generator to make sure only the most recent API call is running on getTopics
+ * @function
+ */
 function* watchGetTopics() {
   yield takeLatest('GET_TOPICS', loadTopics);
 }
 
+/**
+ * A generator to make sure only the most recent API call is running to get a specific article
+ * @function
+ */
 function* watchGetArticle() {
   yield takeLatest('GET_ARTICLE', loadArticle);
 }
 
+/**
+ * Exporting the rootSaga that contains all api watch
+ * @function
+ */
 export default function* rootSaga() {
   yield [
     watchGetArticles(),
